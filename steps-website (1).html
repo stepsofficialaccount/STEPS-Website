@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S.T.E.P.S - Step Tracking Embedded Performance System</title>
+  
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:title" content="S.T.E.P.S - Step Tracking Embedded Performance System">
+  <meta property="og:description" content="Precision step tracking powered by embedded foot sensors. Every step verified, every stride measured.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://steps-tracker.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="S.T.E.P.S - Step Tracking Embedded Performance System">
+  <meta name="twitter:description" content="Precision step tracking powered by embedded foot sensors. Every step verified, every stride measured.">
+  
+  <meta name="description" content="S.T.E.P.S - Precision step tracking powered by embedded foot sensors. Built by student athletes for everyone.">
+  <meta name="keywords" content="step tracker, fitness, insole, bluetooth, step counter, health">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&family=Source+Serif+4:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --orange-500: #ea580c;
+      --orange-600: #c2410c;
+      --orange-100: #ffedd5;
+      --orange-50: #fff7ed;
+      --indigo-500: #6366f1;
+      --indigo-100: #e0e7ff;
+      --emerald-500: #10b981;
+      --emerald-100: #d1fae5;
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-500: #64748b;
+      --slate-400: #94a3b8;
+      --slate-300: #cbd5e1;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --slate-50: #f8fafc;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--white);
+      color: var(--slate-800);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 700;
+      color: var(--slate-900);
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 16px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--slate-200);
+    }
+
+    .logo {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--slate-900);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+
+    .logo span {
+      color: var(--orange-500);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--slate-600);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--orange-500);
+    }
+
+    .nav-cta {
+      background: var(--orange-500);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: background 0.2s ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--orange-600);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 140px 48px 100px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--orange-100);
+      color: var(--orange-600);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-description {
+      font-size: 18px;
+      color: var(--slate-600);
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+    }
+
+    .btn-primary {
+      background: var(--orange-500);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      background: var(--orange-600);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: var(--white);
+      color: var(--slate-700);
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      border: 1px solid var(--slate-300);
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: var(--slate-50);
+      border-color: var(--slate-400);
+    }
+
+    /* Hero Visual */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-image-container {
+      background: linear-gradient(135deg, var(--slate-100) 0%, var(--slate-200) 100%);
+      border-radius: 16px;
+      padding: 40px;
+      position: relative;
+    }
+
+    .hero-mockup {
+      width: 220px;
+      height: 440px;
+      background: var(--slate-900);
+      border-radius: 32px;
+      padding: 8px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    }
+
+    .hero-screen {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, #111 0%, #1a1a1a 100%);
+      border-radius: 26px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-notch {
+      position: absolute;
+      top: 8px;
+      width: 80px;
+      height: 24px;
+      background: #000;
+      border-radius: 12px;
+    }
+
+    .hero-steps {
+      font-size: 42px;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      color: white;
+    }
+
+    .hero-steps-label {
+      font-size: 12px;
+      color: var(--slate-400);
+      margin-top: 4px;
+    }
+
+    /* Project Status Section */
+    .status-section {
+      background: linear-gradient(135deg, var(--slate-900) 0%, var(--slate-800) 100%);
+      padding: 60px 48px;
+    }
+
+    .status-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .status-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .status-live-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--emerald-500);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .status-header h2 {
+      color: white;
+      font-size: 18px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 600;
+    }
+
+    .status-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .status-content h3 {
+      color: white;
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .status-content p {
+      color: var(--slate-400);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .status-meta {
+      text-align: right;
+    }
+
+    .status-phase {
+      display: inline-block;
+      background: var(--orange-500);
+      color: white;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .status-date {
+      color: white;
+      font-size: 15px;
+    }
+
+    .status-date span {
+      display: block;
+      color: var(--slate-400);
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    /* Section Styles */
+    section {
+      padding: 100px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 60px;
+    }
+
+    .section-label {
+      display: inline-block;
+      background: var(--orange-100);
+      color: var(--orange-600);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 40px;
+      margin-bottom: 16px;
+    }
+
+    .section-description {
+      font-size: 18px;
+      color: var(--slate-600);
+      line-height: 1.7;
+    }
+
+    /* Features */
+    .features-section {
+      background: var(--slate-50);
+      padding: 100px 48px;
+      max-width: none;
+    }
+
+    .features-section > * {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border: 1px solid var(--slate-200);
+      border-radius: 12px;
+      padding: 32px;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      border-color: var(--orange-500);
+      box-shadow: 0 10px 40px rgba(234, 88, 12, 0.1);
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--orange-100);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .feature-title {
+      font-size: 18px;
+      margin-bottom: 8px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 700;
+    }
+
+    .feature-description {
+      font-size: 15px;
+      color: var(--slate-600);
+      line-height: 1.6;
+    }
+
+    /* How It Works */
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      background: var(--orange-500);
+      color: white;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .step-item:nth-child(2) .step-number {
+      background: var(--indigo-500);
+    }
+
+    .step-item:nth-child(3) .step-number {
+      background: var(--emerald-500);
+    }
+
+    .step-content h3 {
+      font-size: 20px;
+      margin-bottom: 6px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 700;
+    }
+
+    .step-content p {
+      font-size: 15px;
+      color: var(--slate-600);
+      line-height: 1.6;
+    }
+
+    /* Team Section */
+    .team-section {
+      background: var(--slate-50);
+      padding: 100px 48px;
+      max-width: none;
+    }
+
+    .team-section > * {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .team-quote {
+      max-width: 800px;
+      margin: 0 auto 48px;
+      text-align: center;
+      font-size: 20px;
+      font-style: italic;
+      color: var(--slate-700);
+      line-height: 1.8;
+      padding: 32px;
+      background: var(--white);
+      border-radius: 12px;
+      border-left: 4px solid var(--orange-500);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 700px;
+      margin: 0 auto 48px;
+    }
+
+    .team-card {
+      background: var(--white);
+      border: 1px solid var(--slate-200);
+      border-radius: 12px;
+      padding: 32px;
+      text-align: center;
+    }
+
+    .team-avatar {
+      width: 72px;
+      height: 72px;
+      background: var(--orange-100);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin: 0 auto 16px;
+    }
+
+    .team-name {
+      font-size: 20px;
+      margin-bottom: 4px;
+      font-family: 'Source Sans 3', sans-serif;
+    }
+
+    .team-role {
+      font-size: 14px;
+      color: var(--orange-500);
+      font-weight: 600;
+    }
+
+    /* Thanks Card */
+    .thanks-card {
+      max-width: 700px;
+      margin: 0 auto;
+      background: var(--white);
+      border: 1px solid var(--indigo-100);
+      border-left: 4px solid var(--indigo-500);
+      border-radius: 12px;
+      padding: 32px;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .thanks-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--indigo-100);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      flex-shrink: 0;
+    }
+
+    .thanks-content h3 {
+      font-size: 18px;
+      margin-bottom: 2px;
+      font-family: 'Source Sans 3', sans-serif;
+    }
+
+    .thanks-location {
+      font-size: 13px;
+      color: var(--indigo-500);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .thanks-content p {
+      font-size: 15px;
+      color: var(--slate-600);
+      line-height: 1.6;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: var(--slate-900);
+      padding: 100px 48px;
+      max-width: none;
+      text-align: center;
+    }
+
+    .contact-section .section-label {
+      background: rgba(234, 88, 12, 0.2);
+      color: var(--orange-500);
+    }
+
+    .contact-section .section-title {
+      color: white;
+    }
+
+    .contact-section .section-description {
+      color: var(--slate-400);
+    }
+
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 20px 32px;
+      margin-top: 32px;
+    }
+
+    .contact-email-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--orange-500);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-email-text {
+      text-align: left;
+    }
+
+    .contact-email-label {
+      font-size: 12px;
+      color: var(--slate-400);
+      margin-bottom: 2px;
+    }
+
+    .contact-email a {
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .contact-email a:hover {
+      color: var(--orange-500);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--slate-900);
+      padding: 40px 48px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .footer-logo span {
+      color: var(--orange-500);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--slate-400);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--orange-500);
+    }
+
+    .footer-copy {
+      font-size: 14px;
+      color: var(--slate-500);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 60px;
+        padding: 120px 32px 80px;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+      }
+
+      .status-card {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .status-meta {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 16px 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 100px 24px 60px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      section {
+        padding: 80px 24px;
+      }
+
+      .section-title {
+        font-size: 32px;
+      }
+
+      .features-section,
+      .team-section,
+      .contact-section {
+        padding: 80px 24px;
+      }
+
+      .status-section {
+        padding: 48px 24px;
+      }
+
+      .thanks-card {
+        flex-direction: column;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+      }
+
+      .contact-email {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .contact-email-text {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#" class="logo">S.T.E.P.<span>S</span></a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get in Touch</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <span class="hero-badge">Step Tracking Embedded Performance System</span>
+      <h1>Accurate Step Tracking, Straight From Your Feet</h1>
+      <p class="hero-description">
+        S.T.E.P.S is a smart insole that counts every step with precision. No wrist sensors guessing 
+        from arm swings. No phone apps estimating from your pocket. Just accurate, foot-verified data 
+        you can trust.
+      </p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">
+          Contact Us
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="#how-it-works" class="btn-secondary">Learn More</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-image-container">
+        <div class="hero-mockup">
+          <div class="hero-screen">
+            <div class="hero-notch"></div>
+            <div class="hero-steps">8,432</div>
+            <div class="hero-steps-label">steps today</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Status -->
+  <div class="status-section">
+    <div class="status-container">
+      <div class="status-header">
+        <div class="status-live-dot"></div>
+        <h2>Development Status</h2>
+      </div>
+      <div class="status-card">
+        <div class="status-content">
+          <h3>Building Our First Prototype</h3>
+          <p>
+            We're currently in the hardware development phase, assembling and testing our first 
+            functional prototype. This includes integrating the motion sensors, Bluetooth module, 
+            and power management system into a wearable insole form factor.
+          </p>
+        </div>
+        <div class="status-meta">
+          <span class="status-phase">Phase 1: Prototype</span>
+          <div class="status-date">
+            March 15, 2025
+            <span>Estimated Completion</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <div class="features-section" id="features">
+    <div class="section-header">
+      <span class="section-label">Features</span>
+      <h2 class="section-title">Why S.T.E.P.S?</h2>
+      <p class="section-description">
+        We put the sensors where the movement happens — your feet. 
+        The result is accuracy you can actually trust.
+      </p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3 class="feature-title">Foot-Verified Accuracy</h3>
+        <p class="feature-description">
+          Every step detected directly from your foot. No algorithms guessing from arm swings or phone movement.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📡</div>
+        <h3 class="feature-title">Bluetooth Connectivity</h3>
+        <p class="feature-description">
+          Seamless wireless sync with your phone. Connect once and track automatically in real-time.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔋</div>
+        <h3 class="feature-title">All-Day Battery</h3>
+        <p class="feature-description">
+          Efficient power management keeps you tracking from morning to night without daily charging.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3 class="feature-title">60-Day History</h3>
+        <p class="feature-description">
+          Track your progress over time with detailed charts. See your trends and celebrate your streaks.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3 class="feature-title">Clean, Simple App</h3>
+        <p class="feature-description">
+          An intuitive interface that makes tracking easy. See your steps at a glance, no complexity.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌍</div>
+        <h3 class="feature-title">Built for Everyone</h3>
+        <p class="feature-description">
+          Whether you're training for a marathon or just trying to move more, S.T.E.P.S works for you.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- How It Works -->
+  <section id="how-it-works">
+    <div class="section-header">
+      <span class="section-label">How It Works</span>
+      <h2 class="section-title">Simple Setup, Accurate Tracking</h2>
+      <p class="section-description">
+        Getting started takes less than a minute.
+      </p>
+    </div>
+    <div class="steps-list">
+      <div class="step-item">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Insert the Smart Insole</h3>
+          <p>
+            Place the S.T.E.P.S insole into any shoe. It's thin, comfortable, and designed to fit 
+            standard shoe sizes without changing how your shoes feel.
+          </p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Connect via Bluetooth</h3>
+          <p>
+            Open the S.T.E.P.S app and tap connect. The insole pairs instantly and begins tracking 
+            automatically. No complicated setup required.
+          </p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Walk and Track</h3>
+          <p>
+            Every step you take is counted in real-time and synced to your phone. Watch your progress, 
+            hit your goals, and trust that your numbers are accurate.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <div class="team-section" id="team">
+    <div class="section-header">
+      <span class="section-label">Our Team</span>
+      <h2 class="section-title">Built by Students, For Everyone</h2>
+    </div>
+    
+    <blockquote class="team-quote">
+      "We're student athletes who know firsthand how hard it can be to stay active outside of practice. 
+      Frustrated by the gap between wanting to move more and actually doing it, we built S.T.E.P.S to 
+      make fitness tracking simple, accurate, and accessible for everyone — whether you're a competitive 
+      athlete or just trying to hit 10,000 steps a day."
+    </blockquote>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">🚀</div>
+        <h3 class="team-name">Aarit Shah</h3>
+        <p class="team-role">Co-Founder</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">⚡</div>
+        <h3 class="team-name">Mark Khristoforov</h3>
+        <p class="team-role">Co-Founder</p>
+      </div>
+    </div>
+
+    <div class="thanks-card">
+      <div class="thanks-icon">🔬</div>
+      <div class="thanks-content">
+        <h3>Special Thanks</h3>
+        <p class="thanks-location">Yuri Method Science Organization · Bellevue, Washington</p>
+        <p>
+          The Yuri Method is a science education organization that empowers the next generation of 
+          innovators. Their hands-on programs gave us the tools, mentorship, and confidence to turn 
+          a classroom idea into a real product. We're proud to be part of their community of student creators.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div class="contact-section" id="contact">
+    <div class="section-header">
+      <span class="section-label">Contact</span>
+      <h2 class="section-title">Get in Touch</h2>
+      <p class="section-description">
+        Have questions about S.T.E.P.S? Interested in learning more or following our progress? 
+        We'd love to hear from you.
+      </p>
+    </div>
+    
+    <div class="contact-email">
+      <div class="contact-email-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="M22 6l-10 7L2 6"/>
+        </svg>
+      </div>
+      <div class="contact-email-text">
+        <div class="contact-email-label">Email us at</div>
+        <a href="mailto:aarit.reeti@gmail.com">aarit.reeti@gmail.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">S.T.E.P.<span>S</span></div>
+      <ul class="footer-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="mailto:aarit.reeti@gmail.com">Contact</a></li>
+      </ul>
+      <p class="footer-copy">© 2025 S.T.E.P.S Technologies</p>
+    </div>
+  </footer>
+
+</body>
+</html>
